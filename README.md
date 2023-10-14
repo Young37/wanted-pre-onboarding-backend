@@ -114,4 +114,4 @@ message 문자열 응답메시지<br>
 <img src="https://github.com/Young37/wanted-pre-onboarding-backend/assets/80738298/c37034bc-5f2d-46e1-b82f-be59c5885f04" />
 
 ## 데이터 베이스 모델링
-<img src="https://github.com/Young37/wanted-pre-onboarding-backend/assets/80738298/2db877d1-7551-4af1-8b31-43536ff8da9f"/>
+<img src="https://github.com/Young37/wanted-pre-onboarding-backend/assets/80738298/e40c4f51-b8b4-44da-95f2-53384a181d53"/>
