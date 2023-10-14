@@ -14,6 +14,7 @@
 company_id/정수/회사 아이디<br>
 position_name/문자열/포지션 이름<br>
 reward_amount/정수/채용 보상금<br>
+title/문자열/채용 공고의 제목<br>
 content/문자열/채용 공고의 내용<br>
 nation/문자열/국가명<br>
 region/문자열/지역명<br>
@@ -33,6 +34,7 @@ message 문자열 응답메시지<br>
 ### [request body(JSON)]
 position_name/문자열/포지션 이름<br>
 reward_amount/정수/채용 보상금<br>
+title/문자열/채용 공고의 제목<br>
 content/문자열/채용 공고의 내용<br>
 nation/문자열/국가명<br>
 region/문자열/지역명<br>
@@ -69,6 +71,7 @@ company_id/정수/회사 아이디<br>
 company_name/문자열/회사 이름<br>
 position_name/문자열/포지션 이름<br>
 reward_amount/정수/채용 보상금<br>
+title/문자열/채용 공고의 제목<br>
 nation/문자열/국가명<br>
 region/문자열/지역명<br>
 (실패) - 400<br>
@@ -87,6 +90,7 @@ company_id/정수/회사 아이디<br>
 company_name/문자열/회사 이름<br>
 position_name/문자열/포지션 이름<br>
 reward_amount/정수/채용 보상금<br>
+title/문자열/채용 공고의 제목<br>
 content/문자열/채용 공고의 내용<br>
 nation/문자열/국가명<br>
 region/문자열/지역명<br>
@@ -119,4 +123,4 @@ message 문자열 응답메시지<br>
 <img src="https://github.com/Young37/wanted-pre-onboarding-backend/assets/80738298/c37034bc-5f2d-46e1-b82f-be59c5885f04" />
 
 ## 데이터 베이스 모델링
-<img src="https://github.com/Young37/wanted-pre-onboarding-backend/assets/80738298/e40c4f51-b8b4-44da-95f2-53384a181d53"/>
+<img src="https://github.com/Young37/wanted-pre-onboarding-backend/assets/80738298/1a987103-e4f1-4b6c-8649-94a38a155dd8"/>
