@@ -75,7 +75,7 @@ message 문자열 응답메시지<br>
 - [ ] pageNum과 page_range에 대한 유효성 검사
     - [ ] pageNum : 양의 정수가 아니면 IllegalArgumentException을 발생시킨다
     - [ ] page_range : 1~20의 숫자가 아니면 IllegalArgumentException을 발생시킨다
-- [ ] DB의 채용 공고를 조회 후 응답
+- [x] DB의 채용 공고를 조회 후 응답
 ## 1-5. 채용 상세 페이지를 가져옵니다.
 ### [GET] /recruitment-announcement/{id}
 ### [response body(JSON)]

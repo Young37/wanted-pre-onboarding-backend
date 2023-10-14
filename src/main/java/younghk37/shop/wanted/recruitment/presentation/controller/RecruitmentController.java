@@ -1,12 +1,19 @@
 package younghk37.shop.wanted.recruitment.presentation.controller;
 
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import younghk37.shop.wanted.recruitment.application.service.RecruitmentService;
+import younghk37.shop.wanted.recruitment.domain.entity.RecruitmentAnnouncement;
 import younghk37.shop.wanted.recruitment.presentation.dto.RecruitmentAnnouncementCreationReqDto;
+import younghk37.shop.wanted.recruitment.presentation.dto.RecruitmentAnnouncementGetPageReqDto;
+import younghk37.shop.wanted.recruitment.presentation.dto.RecruitmentAnnouncementGetPageResDto;
 import younghk37.shop.wanted.recruitment.presentation.dto.RecruitmentAnnouncementModifyReqDto;
+
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -31,4 +38,17 @@ public class RecruitmentController {
         recruitmentService.removeRecruitmentAnnouncement(id);
         return ResponseEntity.ok(null);
     }
+
+
+    @GetMapping("/recruitment-announcement/page/{pageNum}")
+    public ResponseEntity<?> getRecruitmentAnnouncementPage(@PathVariable int pageNum, @RequestBody RecruitmentAnnouncementGetPageReqDto recruitmentAnnouncementGetPageReqDto) {
+        int pageRange = 10;
+        if(recruitmentAnnouncementGetPageReqDto.getPageRange() != null) {
+            pageRange = recruitmentAnnouncementGetPageReqDto.getPageRange();
+        }
+
+        List<RecruitmentAnnouncementGetPageResDto> result = recruitmentService.getRecruitmentAnnouncementPage(pageNum, pageRange);
+        return ResponseEntity.ok().body(result);
+    }
+
 }
