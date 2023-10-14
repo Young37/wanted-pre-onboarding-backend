@@ -22,10 +22,11 @@ region/문자열/지역명<br>
 (실패) - 400<br>
 message 문자열 응답메시지<br>
 ### 구현 내용
-- [ ] request body에 대한 유효성 검사<br>
+- [ ] request body에 대한 유효성 검사
     - [ ] position_name : 한 글자 이상이 아니면 IllegalArgumentException을 발생시킨다
     - [ ] reward_amount : 양의 정수가 아니면 IllegalArgumentException을 발생시킨다
-- [ ] DB에 채용 공고 추가<br>
+    - [x] company_id : 존재하지 않는 회사 id이면 IllegalArgumentException을 발생시킨다
+- [x] DB에 채용 공고 추가
 ## 1-2. 채용공고를 수정합니다.
 ### [PUT] /recruitment-announcement/{id}
 ### [request body(JSON)]
