@@ -8,13 +8,14 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import younghk37.shop.wanted.recruitment.domain.entity.Company;
+import younghk37.shop.wanted.recruitment.domain.entity.JobApplication;
 import younghk37.shop.wanted.recruitment.domain.entity.RecruitmentAnnouncement;
+import younghk37.shop.wanted.recruitment.domain.entity.Resume;
 import younghk37.shop.wanted.recruitment.domain.repository.CompanyRepository;
+import younghk37.shop.wanted.recruitment.domain.repository.JobApplicationRepository;
 import younghk37.shop.wanted.recruitment.domain.repository.RecruitmentAnnouncementRepository;
-import younghk37.shop.wanted.recruitment.presentation.dto.RecruitmentAnnouncementCreationReqDto;
-import younghk37.shop.wanted.recruitment.presentation.dto.RecruitmentAnnouncementGetPageResDto;
-import younghk37.shop.wanted.recruitment.presentation.dto.RecruitmentAnnouncementGetResDto;
-import younghk37.shop.wanted.recruitment.presentation.dto.RecruitmentAnnouncementModifyReqDto;
+import younghk37.shop.wanted.recruitment.domain.repository.ResumeRepository;
+import younghk37.shop.wanted.recruitment.presentation.dto.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -24,6 +25,8 @@ import java.util.stream.Collectors;
 public class RecruitmentService {
     private final CompanyRepository companyRepository;
     private final RecruitmentAnnouncementRepository recruitmentAnnouncementRepository;
+    private final ResumeRepository resumeRepository;
+    private final JobApplicationRepository jobApplicationRepository;
 
     public void createRecruitmentAnnouncement(RecruitmentAnnouncementCreationReqDto reqDto) {
         RecruitmentAnnouncement recruitmentAnnouncement = reqDto.toEntity();
@@ -75,4 +78,18 @@ public class RecruitmentService {
         return announcement.toRecruitmentAnnouncementGetResDto();
     }
 
+    public void createJobApplication(JobApplicationCreationReqDto reqDto) {
+        Resume resume = resumeRepository.findById(reqDto.getResumeId())
+                .orElseThrow(() -> new IllegalArgumentException("잘못된 입력입니다(resume_id): " + reqDto.getResumeId()));
+
+        RecruitmentAnnouncement recruitmentAnnouncement = recruitmentAnnouncementRepository.findById(reqDto.getRecruitmentAnnouncementId())
+                .orElseThrow(() -> new IllegalArgumentException("잘못된 입력입니다(recruitment_announcement_id): " + reqDto.getRecruitmentAnnouncementId()));
+
+        JobApplication jobApplication = JobApplication.builder()
+                        .resumeId(reqDto.getResumeId())
+                        .recruitmentAnnouncementId(reqDto.getRecruitmentAnnouncementId())
+                        .build();
+
+        jobApplicationRepository.save(jobApplication);
+    }
 }

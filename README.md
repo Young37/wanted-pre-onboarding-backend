@@ -104,11 +104,11 @@ recruitment_announcement_id/정수/채용 공고 아이디<br>
 message 문자열 응답메시지<br>
 ### 구현 내용
 - [ ] resume_id에 대한 유효성 검사
-  - [ ] 존재하지 않으면 IllegalArgumentException을 발생시킨다
+  - [x] 존재하지 않으면 IllegalArgumentException을 발생시킨다
     - [ ] 사용자가 작성한 이력서가 아니면 IllegalArgumentException을 발생시킨다
 - [ ] recruitment_announcement_id에 대한 유효성 검사
-  - [ ] 존재하지 않으면 IllegalArgumentException을 발생시킨다
-- [ ] DB에 채용 지원 항목을 추가한다
+  - [x] 존재하지 않으면 IllegalArgumentException을 발생시킨다
+- [x] DB에 채용 지원 항목을 추가한다
 
 # 2. 구현 과정
 ## 프로젝트 구성

@@ -4,10 +4,8 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import younghk37.shop.wanted.recruitment.application.service.RecruitmentService;
-import younghk37.shop.wanted.recruitment.domain.entity.RecruitmentAnnouncement;
 import younghk37.shop.wanted.recruitment.presentation.dto.*;
 
 import java.util.List;
@@ -53,6 +51,12 @@ public class RecruitmentController {
     public ResponseEntity<?> getRecruitmentAnnouncement(@PathVariable Long id) {
         RecruitmentAnnouncementGetResDto result = recruitmentService.getRecruitmentAnnouncement(id);
         return ResponseEntity.ok().body(result);
+    }
+
+    @PostMapping("/job-application")
+    public ResponseEntity<?> createJobApplication(@RequestBody JobApplicationCreationReqDto reqDto) {
+        recruitmentService.createJobApplication(reqDto);
+        return ResponseEntity.ok(null);
     }
 
 }
