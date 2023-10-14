@@ -13,6 +13,7 @@ import younghk37.shop.wanted.recruitment.domain.repository.CompanyRepository;
 import younghk37.shop.wanted.recruitment.domain.repository.RecruitmentAnnouncementRepository;
 import younghk37.shop.wanted.recruitment.presentation.dto.RecruitmentAnnouncementCreationReqDto;
 import younghk37.shop.wanted.recruitment.presentation.dto.RecruitmentAnnouncementGetPageResDto;
+import younghk37.shop.wanted.recruitment.presentation.dto.RecruitmentAnnouncementGetResDto;
 import younghk37.shop.wanted.recruitment.presentation.dto.RecruitmentAnnouncementModifyReqDto;
 
 import java.util.List;
@@ -61,21 +62,10 @@ public class RecruitmentService {
         List<RecruitmentAnnouncement> recruitmentAnnouncementList = recruitmentAnnouncementRepository.findAll(pageable).getContent();
 
         List<RecruitmentAnnouncementGetPageResDto> dtos = recruitmentAnnouncementList.stream()
-                .map(this::mapRecruitmentAnnouncementToDto)
+                .map(RecruitmentAnnouncement::toRecruitmentAnnouncementGetPageResDto)
                 .collect(Collectors.toList());
 
         return dtos;
     }
 
-    private RecruitmentAnnouncementGetPageResDto mapRecruitmentAnnouncementToDto(RecruitmentAnnouncement announcement) {
-        return RecruitmentAnnouncementGetPageResDto.builder()
-                .company_id(announcement.getCompanyId())
-                .company_name(announcement.getCompanyName())
-                .position_name(announcement.getPositionName())
-                .reward_amount(announcement.getRewardAmount())
-                .content(announcement.getContent())
-                .nation(announcement.getNation())
-                .region(announcement.getRegion())
-                .build();
-    }
 }

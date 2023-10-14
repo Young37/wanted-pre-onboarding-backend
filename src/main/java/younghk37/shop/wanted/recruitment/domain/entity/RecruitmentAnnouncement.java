@@ -1,6 +1,7 @@
 package younghk37.shop.wanted.recruitment.domain.entity;
 
 import lombok.*;
+import younghk37.shop.wanted.recruitment.presentation.dto.RecruitmentAnnouncementGetPageResDto;
 
 import javax.persistence.*;
 
@@ -21,4 +22,19 @@ public class RecruitmentAnnouncement {
     private String content;
     private String nation;
     private String region;
+
+    public RecruitmentAnnouncementGetPageResDto toRecruitmentAnnouncementGetPageResDto() {
+        return RecruitmentAnnouncementGetPageResDto.builder()
+                .company_id(companyId)
+                .company_name(companyName)
+                .position_name(positionName)
+                .reward_amount(rewardAmount)
+                .content(content)
+                .nation(nation)
+                .region(region)
+                .build();
+    }
+
+
+
 }
