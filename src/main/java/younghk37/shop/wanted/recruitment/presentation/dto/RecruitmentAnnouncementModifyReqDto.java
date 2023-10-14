@@ -11,6 +11,7 @@ import younghk37.shop.wanted.recruitment.domain.entity.RecruitmentAnnouncement;
 public class RecruitmentAnnouncementModifyReqDto {
     private String position_name;
     private int reward_amount;
+    private String title;
     private String content;
     private String nation;
     private String region;

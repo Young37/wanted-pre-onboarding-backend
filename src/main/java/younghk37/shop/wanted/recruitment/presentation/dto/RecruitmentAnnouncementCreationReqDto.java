@@ -16,6 +16,7 @@ public class RecruitmentAnnouncementCreationReqDto {
     private String positionName;
     @JsonProperty("reward_amount")
     private Integer rewardAmount;
+    private String title;
     private String content;
     private String nation;
     private String region;
@@ -27,6 +28,7 @@ public class RecruitmentAnnouncementCreationReqDto {
                 .companyId(companyId)
                 .positionName(positionName)
                 .rewardAmount(rewardAmount)
+                .title(title)
                 .content(content)
                 .nation(nation)
                 .region(region)

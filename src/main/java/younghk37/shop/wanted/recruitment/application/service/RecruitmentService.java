@@ -47,6 +47,7 @@ public class RecruitmentService {
 
         announcement.setPositionName(reqDto.getPosition_name());
         announcement.setRewardAmount(reqDto.getReward_amount());
+        announcement.setTitle(reqDto.getTitle());
         announcement.setContent(reqDto.getContent());
         announcement.setNation(reqDto.getNation());
         announcement.setRegion(reqDto.getRegion());

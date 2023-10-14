@@ -13,6 +13,7 @@ public class RecruitmentAnnouncementGetResDto {
     private String company_name;
     private String position_name;
     private Integer reward_amount;
+    private String title;
     private String content;
     private String nation;
     private String region;

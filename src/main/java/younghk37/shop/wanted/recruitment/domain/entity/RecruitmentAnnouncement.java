@@ -20,6 +20,7 @@ public class RecruitmentAnnouncement {
     private String companyName;
     private String positionName;
     private Integer rewardAmount;
+    private String title;
     private String content;
     private String nation;
     private String region;
@@ -31,6 +32,7 @@ public class RecruitmentAnnouncement {
                 .company_name(companyName)
                 .position_name(positionName)
                 .reward_amount(rewardAmount)
+                .title(title)
                 .nation(nation)
                 .region(region)
                 .build();
@@ -43,6 +45,7 @@ public class RecruitmentAnnouncement {
                 .company_name(companyName)
                 .position_name(positionName)
                 .reward_amount(rewardAmount)
+                .title(title)
                 .content(content)
                 .nation(nation)
                 .region(region)

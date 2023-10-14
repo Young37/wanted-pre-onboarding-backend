@@ -34,7 +34,6 @@ public class RecruitmentController {
         return ResponseEntity.ok(null);
     }
 
-
     @GetMapping("/recruitment-announcement/page/{pageNum}")
     public ResponseEntity<?> getRecruitmentAnnouncementPage(@PathVariable int pageNum, @RequestBody RecruitmentAnnouncementGetPageReqDto recruitmentAnnouncementGetPageReqDto) {
         int pageRange = 10;
@@ -45,7 +44,6 @@ public class RecruitmentController {
         List<RecruitmentAnnouncementGetPageResDto> result = recruitmentService.getRecruitmentAnnouncementPage(pageNum, pageRange);
         return ResponseEntity.ok().body(result);
     }
-
 
     @GetMapping("/recruitment-announcement/{id}")
     public ResponseEntity<?> getRecruitmentAnnouncement(@PathVariable Long id) {
