@@ -53,9 +53,9 @@ message 문자열 응답메시지<br>
 (실패) - 400<br>
 message 문자열 응답메시지<br>
 ### 구현 내용
-- [ ] id에 대한 유효성 검사
-  - [ ] id : 해당 id가 존재하지 않으면 IllegalArgumentException을 발생시킨다
-- [ ] DB의 채용 공고 삭제
+- [x] id에 대한 유효성 검사
+  - [x] id : 해당 id가 존재하지 않으면 IllegalArgumentException을 발생시킨다
+- [x] DB의 채용 공고 삭제
 ## 1-4. 채용공고 목록을 가져옵니다.
 ### [GET] /recruitment-announcement/page/{pageNum}
 ### [request body(JSON)]

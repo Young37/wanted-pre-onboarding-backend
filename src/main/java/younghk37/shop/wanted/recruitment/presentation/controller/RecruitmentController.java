@@ -25,4 +25,10 @@ public class RecruitmentController {
         recruitmentService.modifyRecruitmentAnnouncement(id, reqDto);
         return ResponseEntity.ok(null);
     }
+
+    @DeleteMapping("/recruitment-announcement/{id}")
+    public ResponseEntity<?> removeRecruitmentAnnouncement(@PathVariable Long id) {
+        recruitmentService.removeRecruitmentAnnouncement(id);
+        return ResponseEntity.ok(null);
+    }
 }

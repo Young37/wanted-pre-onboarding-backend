@@ -28,7 +28,6 @@ public class RecruitmentService {
 
     @Transactional(rollbackFor = Exception.class)
     public void modifyRecruitmentAnnouncement(Long id, RecruitmentAnnouncementModifyReqDto reqDto) {
-
         RecruitmentAnnouncement announcement = recruitmentAnnouncementRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("잘못된 입력입니다(id): " + id));
 
@@ -39,5 +38,12 @@ public class RecruitmentService {
         announcement.setRegion(reqDto.getRegion());
 
         recruitmentAnnouncementRepository.save(announcement);
+    }
+
+    public void removeRecruitmentAnnouncement(Long id) {
+        RecruitmentAnnouncement announcement = recruitmentAnnouncementRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("잘못된 입력입니다(id): " + id));
+
+        recruitmentAnnouncementRepository.deleteById(id);
     }
 }
