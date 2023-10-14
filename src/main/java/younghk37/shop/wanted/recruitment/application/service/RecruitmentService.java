@@ -7,14 +7,8 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import younghk37.shop.wanted.recruitment.domain.entity.Company;
-import younghk37.shop.wanted.recruitment.domain.entity.JobApplication;
-import younghk37.shop.wanted.recruitment.domain.entity.RecruitmentAnnouncement;
-import younghk37.shop.wanted.recruitment.domain.entity.Resume;
-import younghk37.shop.wanted.recruitment.domain.repository.CompanyRepository;
-import younghk37.shop.wanted.recruitment.domain.repository.JobApplicationRepository;
-import younghk37.shop.wanted.recruitment.domain.repository.RecruitmentAnnouncementRepository;
-import younghk37.shop.wanted.recruitment.domain.repository.ResumeRepository;
+import younghk37.shop.wanted.recruitment.domain.entity.*;
+import younghk37.shop.wanted.recruitment.domain.repository.*;
 import younghk37.shop.wanted.recruitment.presentation.dto.*;
 
 import java.util.List;
@@ -25,16 +19,25 @@ import java.util.stream.Collectors;
 public class RecruitmentService {
     private final CompanyRepository companyRepository;
     private final RecruitmentAnnouncementRepository recruitmentAnnouncementRepository;
+    private final RecruitmentAnnouncementSkillRepository recruitmentAnnouncementSkillRepository;
     private final ResumeRepository resumeRepository;
     private final JobApplicationRepository jobApplicationRepository;
 
+    @Transactional(rollbackFor = Exception.class)
     public void createRecruitmentAnnouncement(RecruitmentAnnouncementCreationReqDto reqDto) {
         RecruitmentAnnouncement recruitmentAnnouncement = reqDto.toEntity();
-        Company company = companyRepository.findById(reqDto.getCompany_id())
-                .orElseThrow(() -> new IllegalArgumentException("잘못된 입력입니다(company_id):" + reqDto.getCompany_id()));
-        
+        Company company = companyRepository.findById(reqDto.getCompanyId())
+                .orElseThrow(() -> new IllegalArgumentException("잘못된 입력입니다(company_id):" + reqDto.getCompanyId()));
+
         recruitmentAnnouncement.setCompanyName(company.getName());
         recruitmentAnnouncementRepository.save(recruitmentAnnouncement);
+
+        Long recruitmentAnnouncementId = recruitmentAnnouncement.getId();
+        RecruitmentAnnouncementSkill recruitmentAnnouncementSkill = RecruitmentAnnouncementSkill.builder()
+                        .recruitmentAnnouncementId(recruitmentAnnouncementId)
+                        .skillName(reqDto.getSkillName())
+                        .build();
+        recruitmentAnnouncementSkillRepository.save(recruitmentAnnouncementSkill);
     }
 
     @Transactional(rollbackFor = Exception.class)
@@ -47,14 +50,20 @@ public class RecruitmentService {
         announcement.setContent(reqDto.getContent());
         announcement.setNation(reqDto.getNation());
         announcement.setRegion(reqDto.getRegion());
-
         recruitmentAnnouncementRepository.save(announcement);
+
+        RecruitmentAnnouncementSkill recruitmentAnnouncementSkill = recruitmentAnnouncementSkillRepository.findByRecruitmentAnnouncementId(id);
+
+        recruitmentAnnouncementSkill.setSkillName(reqDto.getSkill_name());
+        recruitmentAnnouncementSkillRepository.save(recruitmentAnnouncementSkill);
     }
 
+    @Transactional(rollbackFor = Exception.class)
     public void removeRecruitmentAnnouncement(Long id) {
         RecruitmentAnnouncement announcement = recruitmentAnnouncementRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("잘못된 입력입니다(id): " + id));
 
+        recruitmentAnnouncementSkillRepository.deleteByRecruitmentAnnouncementId(id);
         recruitmentAnnouncementRepository.deleteById(id);
     }
 
@@ -75,7 +84,11 @@ public class RecruitmentService {
         RecruitmentAnnouncement announcement = recruitmentAnnouncementRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("잘못된 입력입니다(id): " + id));
 
-        return announcement.toRecruitmentAnnouncementGetResDto();
+        RecruitmentAnnouncementSkill recruitmentAnnouncementSkill = recruitmentAnnouncementSkillRepository.findByRecruitmentAnnouncementId(id);
+
+        RecruitmentAnnouncementGetResDto result = announcement.toRecruitmentAnnouncementGetResDto();
+        result.setSkill_name(recruitmentAnnouncementSkill.getSkillName());
+        return result;
     }
 
     public void createJobApplication(JobApplicationCreationReqDto reqDto) {

@@ -8,6 +8,7 @@ import lombok.*;
 @Getter
 @Setter
 public class RecruitmentAnnouncementGetResDto {
+    private Long id;
     private Long company_id;
     private String company_name;
     private String position_name;
@@ -15,4 +16,5 @@ public class RecruitmentAnnouncementGetResDto {
     private String content;
     private String nation;
     private String region;
+    private String skill_name;
 }

@@ -14,6 +14,7 @@ public class RecruitmentAnnouncementModifyReqDto {
     private String content;
     private String nation;
     private String region;
+    private String skill_name;
 
 //    public RecruitmentAnnouncement toEntity() {
 //        return RecruitmentAnnouncement.builder()

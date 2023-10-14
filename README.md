@@ -17,6 +17,7 @@ reward_amount/정수/채용 보상금<br>
 content/문자열/채용 공고의 내용<br>
 nation/문자열/국가명<br>
 region/문자열/지역명<br>
+skill_name/문자열/사용기술<br>
 ### [response body(JSON)]
 (성공) - 201<br>
 (실패) - 400<br>
@@ -35,6 +36,7 @@ reward_amount/정수/채용 보상금<br>
 content/문자열/채용 공고의 내용<br>
 nation/문자열/국가명<br>
 region/문자열/지역명<br>
+skill_name/문자열/사용기술<br>
 ### [response body(JSON)]
 (성공) - 200<br>
 (실패) - 400<br>
@@ -62,11 +64,11 @@ message 문자열 응답메시지<br>
 page_range/정수/한 페이지의 크기(선택/기본 10/최대 20)<br>
 ### [response body(JSON)]
 (성공) - 200<br>
+id/정수/아이디<br>
 company_id/정수/회사 아이디<br>
 company_name/문자열/회사 이름<br>
 position_name/문자열/포지션 이름<br>
 reward_amount/정수/채용 보상금<br>
-content/문자열/채용 공고의 내용<br>
 nation/문자열/국가명<br>
 region/문자열/지역명<br>
 (실패) - 400<br>
@@ -80,6 +82,7 @@ message 문자열 응답메시지<br>
 ### [GET] /recruitment-announcement/{id}
 ### [response body(JSON)]
 (성공) - 200<br>
+id/정수/아이디<br>
 company_id/정수/회사 아이디<br>
 company_name/문자열/회사 이름<br>
 position_name/문자열/포지션 이름<br>
@@ -87,6 +90,7 @@ reward_amount/정수/채용 보상금<br>
 content/문자열/채용 공고의 내용<br>
 nation/문자열/국가명<br>
 region/문자열/지역명<br>
+skill_name/문자열/사용기술<br>
 (실패) - 400<br>
 message 문자열 응답메시지<br>
 ### 구현 내용

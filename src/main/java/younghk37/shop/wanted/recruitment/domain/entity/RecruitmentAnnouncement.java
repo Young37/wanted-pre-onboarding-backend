@@ -26,11 +26,11 @@ public class RecruitmentAnnouncement {
 
     public RecruitmentAnnouncementGetPageResDto toRecruitmentAnnouncementGetPageResDto() {
         return RecruitmentAnnouncementGetPageResDto.builder()
+                .id(id)
                 .company_id(companyId)
                 .company_name(companyName)
                 .position_name(positionName)
                 .reward_amount(rewardAmount)
-                .content(content)
                 .nation(nation)
                 .region(region)
                 .build();
@@ -38,6 +38,7 @@ public class RecruitmentAnnouncement {
 
     public RecruitmentAnnouncementGetResDto toRecruitmentAnnouncementGetResDto() {
         return RecruitmentAnnouncementGetResDto.builder()
+                .id(id)
                 .company_id(companyId)
                 .company_name(companyName)
                 .position_name(positionName)

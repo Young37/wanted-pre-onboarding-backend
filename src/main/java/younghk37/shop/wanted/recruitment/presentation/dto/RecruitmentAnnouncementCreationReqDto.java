@@ -1,5 +1,6 @@
 package younghk37.shop.wanted.recruitment.presentation.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 import younghk37.shop.wanted.recruitment.domain.entity.RecruitmentAnnouncement;
 
@@ -9,18 +10,23 @@ import younghk37.shop.wanted.recruitment.domain.entity.RecruitmentAnnouncement;
 @Getter
 @Setter
 public class RecruitmentAnnouncementCreationReqDto {
-    private Long company_id;
-    private String position_name;
-    private Integer reward_amount;
+    @JsonProperty("company_id")
+    private Long companyId;
+    @JsonProperty("position_name")
+    private String positionName;
+    @JsonProperty("reward_amount")
+    private Integer rewardAmount;
     private String content;
     private String nation;
     private String region;
+    @JsonProperty("skill_name")
+    private String skillName;
 
     public RecruitmentAnnouncement toEntity() {
         return RecruitmentAnnouncement.builder()
-                .companyId(company_id)
-                .positionName(position_name)
-                .rewardAmount(reward_amount)
+                .companyId(companyId)
+                .positionName(positionName)
+                .rewardAmount(rewardAmount)
                 .content(content)
                 .nation(nation)
                 .region(region)
