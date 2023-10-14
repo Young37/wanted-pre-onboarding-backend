@@ -40,12 +40,12 @@ region/문자열/지역명<br>
 (실패) - 400<br>
 message 문자열 응답메시지<br>
 ### 구현 내용
-- [ ] id에 대한 유효성 검사
-  - [ ] id : 해당 id가 존재하지 않으면 IllegalArgumentException을 발생시킨다
+- [x] id에 대한 유효성 검사
+  - [x] id : 해당 id가 존재하지 않으면 IllegalArgumentException을 발생시킨다
 - [ ] request body에 대한 유효성 검사<br>
     - [ ] position_name : 한 글자 이상이 아니면 IllegalArgumentException을 발생시킨다
     - [ ] reward_amount : 양의 정수가 아니면 IllegalArgumentException을 발생시킨다
-- [ ] DB의 채용 공고 수정
+- [x] DB의 채용 공고 수정
 ## 1-3. 채용공고를 삭제합니다.
 ### [DELETE] /recruitment-announcement/{id}
 ### [response body(JSON)]
