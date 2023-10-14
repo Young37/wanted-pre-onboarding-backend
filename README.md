@@ -90,9 +90,9 @@ region/문자열/지역명<br>
 (실패) - 400<br>
 message 문자열 응답메시지<br>
 ### 구현 내용
-- [ ] id에 대한 유효성 검사
-  - [ ] id : 해당 id가 존재하지 않으면 IllegalArgumentException을 발생시킨다
-- [ ] DB에서 채용 상세 정보를 조회하여 응답한다
+- [x] id에 대한 유효성 검사
+  - [x] id : 해당 id가 존재하지 않으면 IllegalArgumentException을 발생시킨다
+- [x] DB에서 채용 상세 정보를 조회하여 응답한다
 ## 1-6. 사용자는 채용공고에 지원합니다.
 ### [POST] /job-application
 ### [request body(JSON)]

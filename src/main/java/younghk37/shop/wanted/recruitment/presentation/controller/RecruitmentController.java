@@ -8,10 +8,7 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import younghk37.shop.wanted.recruitment.application.service.RecruitmentService;
 import younghk37.shop.wanted.recruitment.domain.entity.RecruitmentAnnouncement;
-import younghk37.shop.wanted.recruitment.presentation.dto.RecruitmentAnnouncementCreationReqDto;
-import younghk37.shop.wanted.recruitment.presentation.dto.RecruitmentAnnouncementGetPageReqDto;
-import younghk37.shop.wanted.recruitment.presentation.dto.RecruitmentAnnouncementGetPageResDto;
-import younghk37.shop.wanted.recruitment.presentation.dto.RecruitmentAnnouncementModifyReqDto;
+import younghk37.shop.wanted.recruitment.presentation.dto.*;
 
 import java.util.List;
 
@@ -48,6 +45,13 @@ public class RecruitmentController {
         }
 
         List<RecruitmentAnnouncementGetPageResDto> result = recruitmentService.getRecruitmentAnnouncementPage(pageNum, pageRange);
+        return ResponseEntity.ok().body(result);
+    }
+
+
+    @GetMapping("/recruitment-announcement/{id}")
+    public ResponseEntity<?> getRecruitmentAnnouncement(@PathVariable Long id) {
+        RecruitmentAnnouncementGetResDto result = recruitmentService.getRecruitmentAnnouncement(id);
         return ResponseEntity.ok().body(result);
     }
 

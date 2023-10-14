@@ -68,4 +68,11 @@ public class RecruitmentService {
         return dtos;
     }
 
+    public RecruitmentAnnouncementGetResDto getRecruitmentAnnouncement(Long id) {
+        RecruitmentAnnouncement announcement = recruitmentAnnouncementRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("잘못된 입력입니다(id): " + id));
+
+        return announcement.toRecruitmentAnnouncementGetResDto();
+    }
+
 }
