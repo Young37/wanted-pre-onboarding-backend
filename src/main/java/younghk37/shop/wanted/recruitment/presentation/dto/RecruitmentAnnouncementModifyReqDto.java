@@ -4,8 +4,6 @@ import lombok.*;
 import younghk37.shop.wanted.recruitment.domain.entity.RecruitmentAnnouncement;
 
 @Builder
-@NoArgsConstructor
-@AllArgsConstructor
 @Getter
 @Setter
 public class RecruitmentAnnouncementModifyReqDto {

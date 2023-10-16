@@ -7,8 +7,6 @@ import younghk37.shop.wanted.recruitment.domain.entity.RecruitmentAnnouncement;
 import javax.persistence.criteria.CriteriaBuilder;
 
 @Builder
-@NoArgsConstructor
-@AllArgsConstructor
 @Getter
 @Setter
 public class RecruitmentAnnouncementGetPageReqDto {

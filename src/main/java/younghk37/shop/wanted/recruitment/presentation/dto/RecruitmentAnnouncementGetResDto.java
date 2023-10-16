@@ -3,8 +3,6 @@ package younghk37.shop.wanted.recruitment.presentation.dto;
 import lombok.*;
 
 @Builder
-@NoArgsConstructor
-@AllArgsConstructor
 @Getter
 @Setter
 public class RecruitmentAnnouncementGetResDto {
