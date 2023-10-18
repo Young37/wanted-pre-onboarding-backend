@@ -1,7 +1,6 @@
 package younghk37.shop.wanted.recruitment.presentation.dto;
 
 import lombok.*;
-import younghk37.shop.wanted.recruitment.domain.entity.RecruitmentAnnouncement;
 
 @Builder
 @Getter

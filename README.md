@@ -24,10 +24,10 @@ skill_name/문자열/사용기술<br>
 (실패) - 400<br>
 message 문자열 응답메시지<br>
 ### 구현 내용
-- [ ] request body에 대한 유효성 검사
-    - [ ] position_name : 한 글자 이상이 아니면 IllegalArgumentException을 발생시킨다
-    - [ ] reward_amount : 양의 정수가 아니면 IllegalArgumentException을 발생시킨다
-    - [x] company_id : 존재하지 않는 회사 id이면 IllegalArgumentException을 발생시킨다
+- [x] request body에 대한 유효성 검사
+    - [x] position_name : 한 글자 이상이 아니면 IllegalRequestException을 발생시킨다
+    - [x] reward_amount : 0 이상의 정수가 아니면 IllegalRequestException을 발생시킨다
+    - [x] company_id : 존재하지 않는 회사 id이면 IllegalRequestException을 발생시킨다
 - [x] DB에 채용 공고 추가
 ## 1-2. 채용공고를 수정합니다.
 ### [PUT] /recruitment-announcement/{id}
@@ -120,7 +120,7 @@ message 문자열 응답메시지<br>
 
 # 2. 구현 과정
 ## 프로젝트 구성
-<img src="https://github.com/Young37/wanted-pre-onboarding-backend/assets/80738298/c37034bc-5f2d-46e1-b82f-be59c5885f04" />
+<img src="https://github.com/Young37/wanted-pre-onboarding-backend/assets/80738298/40305058-ac79-4cbb-87e0-81df4e301487" />
 
 ## 데이터 베이스 모델링
 <img src="https://github.com/Young37/wanted-pre-onboarding-backend/assets/80738298/1a987103-e4f1-4b6c-8649-94a38a155dd8"/>

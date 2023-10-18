@@ -1,13 +1,15 @@
 package younghk37.shop.wanted.recruitment.presentation.controller;
 
-import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import younghk37.shop.wanted.recruitment.aop.annotation.ValidAop;
 import younghk37.shop.wanted.recruitment.application.service.RecruitmentService;
 import younghk37.shop.wanted.recruitment.presentation.dto.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -16,8 +18,9 @@ public class RecruitmentController {
 
     private final RecruitmentService recruitmentService;
 
+    @ValidAop
     @PostMapping("/recruitment-announcement")
-    public ResponseEntity<?> createRecruitmentAnnouncement(@RequestBody RecruitmentAnnouncementCreationReqDto reqDto) {
+    public ResponseEntity<?> createRecruitmentAnnouncement(@Valid @RequestBody RecruitmentAnnouncementCreationReqDto reqDto, BindingResult bindingResult) {
         recruitmentService.createRecruitmentAnnouncement(reqDto);
         return ResponseEntity.status(HttpStatus.CREATED).body(null);
     }

@@ -1,14 +1,13 @@
 package younghk37.shop.wanted.recruitment.application.service;
 
-import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import younghk37.shop.wanted.recruitment.domain.entity.*;
 import younghk37.shop.wanted.recruitment.domain.repository.*;
+import younghk37.shop.wanted.recruitment.exception.IllegalRequestException;
 import younghk37.shop.wanted.recruitment.presentation.dto.*;
 
 import java.util.List;
@@ -27,7 +26,7 @@ public class RecruitmentService {
     public void createRecruitmentAnnouncement(RecruitmentAnnouncementCreationReqDto reqDto) {
         RecruitmentAnnouncement recruitmentAnnouncement = reqDto.toEntity();
         Company company = companyRepository.findById(reqDto.getCompanyId())
-                .orElseThrow(() -> new IllegalArgumentException("잘못된 입력입니다(company_id):" + reqDto.getCompanyId()));
+                .orElseThrow(() -> new IllegalRequestException("잘못된 입력입니다(company_id):" + reqDto.getCompanyId()));
 
         recruitmentAnnouncement.setCompanyName(company.getName());
         recruitmentAnnouncementRepository.save(recruitmentAnnouncement);
